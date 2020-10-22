@@ -393,23 +393,23 @@ class Checks():
         """ Enable or disable Plaidml for AMD"""
         self.output.info("AMD Support: AMD GPU support is currently limited.\r\n"
                          "Nvidia Users MUST answer 'no' to this option.")
-        i = input("Enable AMD Support? [y/N] ")
-        if i in ("Y", "y"):
-            self.output.info("AMD Support Enabled")
-            self.env.enable_amd = True
-        else:
-            self.output.info("AMD Support Disabled")
-            self.env.enable_amd = False
+        # i = input("Enable AMD Support? [y/N] ")
+        # if i in ("Y", "y"):
+        #     self.output.info("AMD Support Enabled")
+        #     self.env.enable_amd = True
+        # else:
+        self.output.info("AMD Support Disabled")
+        self.env.enable_amd = False
 
     def docker_ask_enable(self):
-        """ Enable or disable Docker """
-        i = input("Enable  Docker? [y/N] ")
-        if i in ("Y", "y"):
-            self.output.info("Docker Enabled")
-            self.env.enable_docker = True
-        else:
-            self.output.info("Docker Disabled")
-            self.env.enable_docker = False
+        # """ Enable or disable Docker """
+        # i = input("Enable  Docker? [y/N] ")
+        # if i in ("Y", "y"):
+        #     self.output.info("Docker Enabled")
+        #     self.env.enable_docker = True
+        # else:
+        self.output.info("Docker Disabled")
+        self.env.enable_docker = False
 
     def docker_confirm(self):
         """ Warn if nvidia-docker on non-Linux system """
@@ -428,14 +428,14 @@ class Checks():
             self.tips.docker_cuda()
 
     def cuda_ask_enable(self):
-        """ Enable or disable CUDA """
-        i = input("Enable  CUDA? [Y/n] ")
-        if i in ("", "Y", "y"):
-            self.output.info("CUDA Enabled")
-            self.env.enable_cuda = True
-        else:
-            self.output.info("CUDA Disabled")
-            self.env.enable_cuda = False
+        # """ Enable or disable CUDA """
+        # i = input("Enable  CUDA? [Y/n] ")
+        # if i in ("", "Y", "y"):
+        self.output.info("CUDA Enabled")
+        self.env.enable_cuda = True
+        # else:
+        #     self.output.info("CUDA Disabled")
+        #     self.env.enable_cuda = False
 
     def cuda_check(self):
         """ Check Cuda for Linux or Windows """
@@ -589,10 +589,10 @@ class Install():
 
     def ask_continue(self):
         """ Ask Continue with Install """
-        inp = input("Please ensure your System Dependencies are met. Continue? [y/N] ")
-        if inp in ("", "N", "n"):
-            self.output.error("Please install system dependencies to continue")
-            sys.exit(1)
+        # inp = input("Please ensure your System Dependencies are met. Continue? [y/N] ")
+        # if inp in ("", "N", "n"):
+        #     self.output.error("Please install system dependencies to continue")
+        #     sys.exit(1)
 
     def check_missing_dep(self):
         """ Check for missing dependencies """
