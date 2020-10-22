@@ -1,19 +1,20 @@
-
-
-
-def initial()
-
-!mkdir MyDrive     
-!mount --bind /content/drive/My\ Drive /content/MyDrive
-%cd /content/MyDrive
-
+import sys
 import os
-try:
+if not os.path.exists('/content/MyDrive/'):
   os.mkdir('/content/MyDrive/')
-except:
-  pass
-!mount --bind /content/drive/My\ Drive /content/MyDrive
-%cd /content/MyDrive
+print("happy") 
+os.system('mount --bind /content/drive/My\ Drive /content/MyDrive')
+
+os.system("cd /content/MyDrive")
+
+print("hello")
+# import os
+# try:
+#   os.mkdir('/content/MyDrive/')
+# except:
+#   pass
+# !mount --bind /content/drive/My\ Drive /content/MyDrive
+# %cd /content/MyDrive
 
 #Fill this very Carefully
 
@@ -35,26 +36,34 @@ if not os.path.exists('/content/MyDrive/'+your_folder_name):
   except:
     pass
 
-
-cd $own_path
+print(own_path)
+# os.system("cd own_path")
 
 # Git clone 
 
-if not os.path.exists('/content/MyDrive/'+your_folder_name+'/faceswap'):
-  !git clone https://github.com/t-qureshi/faceswap.git
-faceswap_path = own_path+'faceswap'
+# pip install git
 
-cd $faceswap_path
+if not os.path.exists('/content/MyDrive/'+your_folder_name+'/faceswap'):
+   clone = "git clone https://github.com/t-qureshi/faceswap.git"
+   os.system(clone) # Cloning
+faceswap_path = own_path + 'faceswap'
+
+# os.system("cd faceswap_path")
+print(faceswap_path)
+os.chdir(faceswap_path)
 
 #Install Setups
 
-sudo apt install python3.7
-curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-python3.7 get-pip.py
-python3.7 -m pip install -r requirements_nvidia.txt
-python3.7 -m pip install -r_requirements_base.txt
-python3.7 -m pip install face-recognition
-python3.7 setup.py
+# sudo apt install python3.7
+# curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+# python3.7 get-pip.py
+# python3.7 -m pip install -r requirements_nvidia.txt
+# python3.7 -m pip install -r_requirements_base.txt
+# python3.7 -m pip install face-recognition
+# python3.7 setup.py
+# import subprocess
+# subprocess.call(['sh', '/Requirments.sh'])
+os.system('bash ./Requirments.sh')
 
 # Define paths
 folder_a = data_path+profile_name_A
@@ -72,20 +81,22 @@ model_path = own_path+profile_name_A+'AND'+profile_name_B+'/Model'
 
 
 
-!echo $folder_a
-!echo $folder_b
-!echo $folder_a_faces
-!echo $folder_b_faces
-!echo $folder_a_faces_alignments
-!echo $folder_b_faces_alignments
-!echo $model_path
+print (folder_a)
+print (folder_b)
+print (folder_a_faces)
+print (folder_b_faces)
+print (folder_a_faces_alignments)
+print (folder_b_faces_alignments)
+print (model_path)
 
 
 if not os.path.exists(folder_a_faces_alignments):
-  !python3.7 faceswap.py extract -i $folder_a -o $folder_a_faces -al $folder_a_faces_alignments
+  pass
+  #python3 faceswap.py extract -i $folder_a -o $folder_a_faces -al $folder_a_faces_alignments
 
 if not os.path.exists(folder_b_faces_alignments):
-  !python3.7 faceswap.py extract -i $folder_b -o $folder_b_faces -al $folder_b_faces_alignments
+  pass
+  #python3 faceswap.py extract -i $folder_b -o $folder_b_faces -al $folder_b_faces_alignments
 
 if not os.path.exists(model_path):
   os.mkdir(model_path) 
@@ -96,6 +107,7 @@ if not os.path.exists(model_path):
 #--input-A $folder_a_faces \
 #--input-B $folder_b_faces \
 #--model-dir $model_path
+
 
 
 
